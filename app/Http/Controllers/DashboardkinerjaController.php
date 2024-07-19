@@ -1075,13 +1075,13 @@ class DashboardkinerjaController extends Controller
 
     public function entri()
     {
-        $matchThese = ['nip_pegawai' => auth()->user()->nip_pegawai];
-        $OperatorEntri =  OperatorEntri::where($matchThese)->get();
-        // dd($OperatorEntri);
-        if ($OperatorEntri->isEmpty()) {
-            // return redirect()->back();
-            return redirect()->intended('home');
-        }
+        // $matchThese = ['nip_pegawai' => auth()->user()->nip_pegawai];
+        // $OperatorEntri =  OperatorEntri::where($matchThese)->get();
+        // // dd($OperatorEntri);
+        // if ($OperatorEntri->isEmpty()) {
+        //     // return redirect()->back();
+        //     return redirect()->intended('home');
+        // }
         // dd(auth()->user()->kode_satker);
         // dd($OperatorEntri);
         $data = [];
@@ -1094,7 +1094,7 @@ class DashboardkinerjaController extends Controller
         $data["bulan"] = request('bulan');
         $data["indikator"] = request('indikator');
         if ($data["satker"] == null) {
-            $data["satker"] = auth()->user()->kode_satker;
+            $data["satker"] = '1100';
         }
         if ($data["tahun"] == null) {
             $data["tahun"] = date("Y");
@@ -1105,9 +1105,9 @@ class DashboardkinerjaController extends Controller
         if ($data["indikator"] == null) {
             $data["indikator"] = '1';
         }
-        if (auth()->user()->kode_satker != '1100') {
-            $data["satker"] = auth()->user()->kode_satker;
-        };
+        // if (auth()->user()->kode_satker != '1100') {
+        //     $data["satker"] = auth()->user()->kode_satker;
+        // };
         $data["datasatker"] = DB::table('indikator_kinerjas')
             ->select('indikator_kinerjas.*', 'angka_kinerjas.*')
             ->leftJoin('angka_kinerjas', 'indikator_kinerjas.kode_indikator', '=', 'angka_kinerjas.kode_indikator')
@@ -1122,7 +1122,7 @@ class DashboardkinerjaController extends Controller
             ->where('kinerja_bulanans.status', '=', "suplemen")
             ->get();
         // dd($data);
-        return view('dashboard-kinerja.entri.entri', compact('data'));
+        return view('dashboard-kinerja.entri-kinerja.entri-kinerja', compact('data'));
     }
 
     public function showdataentri($satker)

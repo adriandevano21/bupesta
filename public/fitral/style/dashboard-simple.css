@@ -39,7 +39,7 @@
     .kotak-legenda { width:1vh; height:1vh; margin-left:2vw; margin-right:0.15vw }
 
     /* progres-tabel */
-    .table-container, .info-container { position: relative; max-height: 100%; width: 100%; overflow: scroll; border: 1vw solid white }
+    .table-container, .info-container { position: relative; height:50.6vh; width: 100%; overflow: scroll; border: 1vw solid white }
     table { border-collapse: collapse; width:100% }
     td, th { padding: 0.25vw; box-sizing: border-box; font-size: 0.75vw; white-space: nowrap }
     th { text-align: center }
