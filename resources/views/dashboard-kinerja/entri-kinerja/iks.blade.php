@@ -1,4 +1,4 @@
-<table id="tabel2" class="table table-bordered" style="font-size: 12pt">
+<table id="tabeliks" class="table table-bordered" style="font-size: 12pt">
     <thead class="border-black" style="background: #3ecbff !important">
         <tr>
             <th rowspan="3" style="background: black !important"></th>

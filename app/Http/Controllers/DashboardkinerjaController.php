@@ -1045,7 +1045,6 @@ class DashboardkinerjaController extends Controller
         return redirect('/crud-dashboard-kinerja?satker=' . $id)->with('success', 'Terupdate');
     }
 
-
     public function input()
     {
         $data = [];
@@ -1071,7 +1070,6 @@ class DashboardkinerjaController extends Controller
         }
         return view('dashboard-kinerja.input.input', compact('data'));
     }
-
 
     public function entri()
     {
@@ -1135,11 +1133,9 @@ class DashboardkinerjaController extends Controller
         ]);
     }
 
-
-
     public function update(Request $request, $id)
     {
-
+        dd($request);
         $satker = DB::table('kinerja_bulanans')
             ->select('kode_satker')
             ->where('kinerja_bulanans.id', '=', $id)
@@ -1431,5 +1427,268 @@ class DashboardkinerjaController extends Controller
         $number = str_replace(',', '.', $number);
 
         return floatval($number);
+    }
+
+    public function updatekinerja(Request $request)
+    {
+        dd($request);
+
+        $satker = DB::table('kinerja_bulanans')
+            ->select('kode_satker')
+            ->where('kinerja_bulanans.id', '=', $request->id)
+            ->first();
+        $kode_indikator = DB::table('kinerja_bulanans')
+            ->select('kode_indikator', 'kode_sub1_indikator', 'status')
+            ->where('kinerja_bulanans.id', '=', $request->id)
+            ->first();
+
+        // dd(($request->realisasi_b1));
+
+        if ($kode_indikator->status == 'utama') {
+            $indikator = 1;
+            $realisasi_tr_1 = $this->formatToEnglishDecimal($request->realisasi_b1) + $this->formatToEnglishDecimal($request->realisasi_b2) + $this->formatToEnglishDecimal($request->realisasi_b3);
+            $realisasi_tr_2 = $realisasi_tr_1 + $this->formatToEnglishDecimal($request->realisasi_b4) + $this->formatToEnglishDecimal($request->realisasi_b5) + $this->formatToEnglishDecimal($request->realisasi_b6);
+            $realisasi_tr_3 = $realisasi_tr_2 + $this->formatToEnglishDecimal($request->realisasi_b7) + $this->formatToEnglishDecimal($request->realisasi_b8) + $this->formatToEnglishDecimal($request->realisasi_b9);
+            $realisasi_tr_4 = $realisasi_tr_3 + $this->formatToEnglishDecimal($request->realisasi_b10) + $this->formatToEnglishDecimal($request->realisasi_b11) + $this->formatToEnglishDecimal($request->realisasi_b12);
+            if ($kode_indikator->kode_sub1_indikator == 1) {
+                DB::table('angka_kinerjas')
+                    ->where('satker', '=', $satker->kode_satker)
+                    ->where('kode_indikator', '=', $kode_indikator->kode_indikator)
+                    ->update([
+                        'target_setahun' => $this->formatToEnglishDecimal($request->target_tr_4),
+                        'realisasi_setahun' => $realisasi_tr_4,
+                        'target_tr_1' => $this->formatToEnglishDecimal($request->target_tr_1),
+                        'realisasi_tr_1' => $realisasi_tr_1,
+                        'target_tr_2' => $this->formatToEnglishDecimal($request->target_tr_2),
+                        'realisasi_tr_2' => $realisasi_tr_2,
+                        'target_tr_3' => $this->formatToEnglishDecimal($request->target_tr_3),
+                        'realisasi_tr_3' => $realisasi_tr_3
+                    ]);
+            };
+            DB::table('kinerja_bulanans')
+                ->where('id', '=', $request->id)
+                ->update([
+                    'target_tr_1' => $this->formatToEnglishDecimal($request->target_tr_1),
+                    'target_tr_2' => $this->formatToEnglishDecimal($request->target_tr_2),
+                    'target_tr_3' => $this->formatToEnglishDecimal($request->target_tr_3),
+                    'target_tr_4' => $this->formatToEnglishDecimal($request->target_tr_4),
+                    'realisasi_b1' => $this->formatToEnglishDecimal($request->realisasi_b1),
+                    'realisasi_b2' => $this->formatToEnglishDecimal($request->realisasi_b2),
+                    'realisasi_b3' => $this->formatToEnglishDecimal($request->realisasi_b3),
+                    'realisasi_b4' => $this->formatToEnglishDecimal($request->realisasi_b4),
+                    'realisasi_b5' => $this->formatToEnglishDecimal($request->realisasi_b5),
+                    'realisasi_b6' => $this->formatToEnglishDecimal($request->realisasi_b6),
+                    'realisasi_b7' => $this->formatToEnglishDecimal($request->realisasi_b7),
+                    'realisasi_b8' => $this->formatToEnglishDecimal($request->realisasi_b8),
+                    'realisasi_b9' => $this->formatToEnglishDecimal($request->realisasi_b9),
+                    'realisasi_b10' => $this->formatToEnglishDecimal($request->realisasi_b10),
+                    'realisasi_b11' => $this->formatToEnglishDecimal($request->realisasi_b11),
+                    'realisasi_b12' => $this->formatToEnglishDecimal($request->realisasi_b12),
+                    'realisasi_tr_1' => $realisasi_tr_1,
+                    'realisasi_tr_2' => $realisasi_tr_2,
+                    'realisasi_tr_3' => $realisasi_tr_3,
+                    'realisasi_setahun' => $realisasi_tr_4
+                ]);
+            if ($kode_indikator->kode_indikator == 'i2') {
+                if ($kode_indikator->kode_sub1_indikator == '3') {
+                    $sub_i2 = DB::table('kinerja_bulanans')
+                        ->select('*')
+                        ->where('kinerja_bulanans.kode_satker', '=', $satker->kode_satker)
+                        ->where('kinerja_bulanans.kode_indikator', '=', 'i2')
+                        ->get();
+                    $target_x_tr_1 = 0;
+                    $target_x_tr_2 = 0;
+                    $target_x_tr_3 = 0;
+                    $target_x_tr_4 = 0;
+                    $realisasi_x_b1 = 0;
+                    $realisasi_x_b2 = 0;
+                    $realisasi_x_b3 = 0;
+                    $realisasi_x_b4 = 0;
+                    $realisasi_x_b5 = 0;
+                    $realisasi_x_b6 = 0;
+                    $realisasi_x_b7 = 0;
+                    $realisasi_x_b8 = 0;
+                    $realisasi_x_b9 = 0;
+                    $realisasi_x_b10 = 0;
+                    $realisasi_x_b11 = 0;
+                    $realisasi_x_b12 = 0;
+                    for ($i = 2; $i < 7; $i++) {
+                        $target_x_tr_1 = $target_x_tr_1 + $sub_i2[$i]->target_tr_1;
+                        $target_x_tr_2 = $target_x_tr_2 + $sub_i2[$i]->target_tr_2;
+                        $target_x_tr_3 = $target_x_tr_3 + $sub_i2[$i]->target_tr_3;
+                        $target_x_tr_4 = $target_x_tr_4 + $sub_i2[$i]->target_tr_4;
+                        $realisasi_x_b1 = $realisasi_x_b1 + $sub_i2[$i]->realisasi_b1;
+                        $realisasi_x_b2 = $realisasi_x_b2 + $sub_i2[$i]->realisasi_b2;
+                        $realisasi_x_b3 = $realisasi_x_b3 + $sub_i2[$i]->realisasi_b3;
+                        $realisasi_x_b4 = $realisasi_x_b4 + $sub_i2[$i]->realisasi_b4;
+                        $realisasi_x_b5 = $realisasi_x_b5 + $sub_i2[$i]->realisasi_b5;
+                        $realisasi_x_b6 = $realisasi_x_b6 + $sub_i2[$i]->realisasi_b6;
+                        $realisasi_x_b7 = $realisasi_x_b7 + $sub_i2[$i]->realisasi_b7;
+                        $realisasi_x_b8 = $realisasi_x_b8 + $sub_i2[$i]->realisasi_b8;
+                        $realisasi_x_b9 = $realisasi_x_b9 + $sub_i2[$i]->realisasi_b9;
+                        $realisasi_x_b10 = $realisasi_x_b10 + $sub_i2[$i]->realisasi_b10;
+                        $realisasi_x_b11 = $realisasi_x_b11 + $sub_i2[$i]->realisasi_b11;
+                        $realisasi_x_b12 = $realisasi_x_b12 + $sub_i2[$i]->realisasi_b12;
+                    };
+                    $realisasi_x_tr_1 = $realisasi_x_b1 + $realisasi_x_b2 + $realisasi_x_b3;
+                    $realisasi_x_tr_2 = $realisasi_x_tr_1 + $realisasi_x_b4 + $realisasi_x_b5 + $realisasi_x_b6;
+                    $realisasi_x_tr_3 = $realisasi_x_tr_2 + $realisasi_x_b7 + $realisasi_x_b8 + $realisasi_x_b9;
+                    $realisasi_x_tr_4 = $realisasi_x_tr_3 + $realisasi_x_b10 + $realisasi_x_b11 + $realisasi_x_b12;
+                    DB::table('kinerja_bulanans')
+                        ->where('id', '=', $sub_i2[1]->id)
+                        ->update([
+                            'target_tr_1' => $target_x_tr_1,
+                            'target_tr_2' => $target_x_tr_2,
+                            'target_tr_3' => $target_x_tr_3,
+                            'target_tr_4' => $target_x_tr_4,
+                            'realisasi_b1' => $realisasi_x_b1,
+                            'realisasi_b2' => $realisasi_x_b2,
+                            'realisasi_b3' => $realisasi_x_b3,
+                            'realisasi_b4' => $realisasi_x_b4,
+                            'realisasi_b5' => $realisasi_x_b5,
+                            'realisasi_b6' => $realisasi_x_b6,
+                            'realisasi_b7' => $realisasi_x_b7,
+                            'realisasi_b8' => $realisasi_x_b8,
+                            'realisasi_b9' => $realisasi_x_b9,
+                            'realisasi_b10' => $realisasi_x_b10,
+                            'realisasi_b11' => $realisasi_x_b11,
+                            'realisasi_b12' => $realisasi_x_b12,
+                            'realisasi_tr_1' => $realisasi_x_tr_1,
+                            'realisasi_tr_2' => $realisasi_x_tr_2,
+                            'realisasi_tr_3' => $realisasi_x_tr_3,
+                            'realisasi_setahun' => $realisasi_x_tr_4
+                        ]);
+                } else {
+                    $sub_i2 = DB::table('kinerja_bulanans')
+                        ->select('*')
+                        ->where('kinerja_bulanans.kode_satker', '=', $satker->kode_satker)
+                        ->where('kinerja_bulanans.kode_indikator', '=', 'i2')
+                        ->get();
+                    $target_x_tr_1 = 0;
+                    $target_x_tr_2 = 0;
+                    $target_x_tr_3 = 0;
+                    $target_x_tr_4 = 0;
+                    for ($i = 8; $i < 13; $i++) {
+                        $target_x_tr_1 = $target_x_tr_1 + $sub_i2[$i]->target_tr_1;
+                        $target_x_tr_2 = $target_x_tr_2 + $sub_i2[$i]->target_tr_2;
+                        $target_x_tr_3 = $target_x_tr_3 + $sub_i2[$i]->target_tr_3;
+                        $target_x_tr_4 = $target_x_tr_4 + $sub_i2[$i]->target_tr_4;
+                    };
+                    DB::table('kinerja_bulanans')
+                        ->where('id', '=', $sub_i2[7]->id)
+                        ->update([
+                            'target_tr_1' => $target_x_tr_1,
+                            'target_tr_2' => $target_x_tr_2,
+                            'target_tr_3' => $target_x_tr_3,
+                            'target_tr_4' => $target_x_tr_4,
+                        ]);
+                };
+                $update_i2 = DB::table('kinerja_bulanans')
+                    ->select('*')
+                    ->where('kinerja_bulanans.kode_satker', '=', $satker->kode_satker)
+                    ->where('kinerja_bulanans.kode_indikator', '=', 'i2')
+                    ->get();
+                $target_i2_tr1 = $update_i2[1]->target_tr_1 / $update_i2[7]->target_tr_4 * 100;
+                $target_i2_tr2 = $update_i2[1]->target_tr_2 / $update_i2[7]->target_tr_4 * 100;
+                $target_i2_tr3 = $update_i2[1]->target_tr_3 / $update_i2[7]->target_tr_4 * 100;
+                $target_i2_tr4 = $update_i2[1]->target_tr_4 / $update_i2[7]->target_tr_4 * 100;
+                $realisasi_i2_tr1 = $update_i2[1]->realisasi_tr_1 / $update_i2[7]->target_tr_4 * 100;
+                $realisasi_i2_tr2 = $update_i2[1]->realisasi_tr_2 / $update_i2[7]->target_tr_4 * 100;
+                $realisasi_i2_tr3 = $update_i2[1]->realisasi_tr_3 / $update_i2[7]->target_tr_4 * 100;
+                $realisasi_i2_tr4 = $update_i2[1]->realisasi_setahun / $update_i2[7]->target_tr_4 * 100;
+                DB::table('kinerja_bulanans')
+                    ->where('id', '=', $update_i2[0]->id)
+                    ->update([
+                        'target_tr_1' => $target_i2_tr1,
+                        'target_tr_2' => $target_i2_tr2,
+                        'target_tr_3' => $target_i2_tr3,
+                        'target_tr_4' => $target_i2_tr4,
+                        'realisasi_tr_1' => $realisasi_i2_tr1,
+                        'realisasi_tr_2' => $realisasi_i2_tr2,
+                        'realisasi_tr_3' => $realisasi_i2_tr3,
+                        'realisasi_setahun' => $realisasi_i2_tr4,
+                    ]);
+                DB::table('angka_kinerjas')
+                    ->where('satker', '=', $satker->kode_satker)
+                    ->where('kode_indikator', '=', 'i2')
+                    ->update([
+                        'target_tr_1' => $target_i2_tr1,
+                        'target_tr_2' => $target_i2_tr2,
+                        'target_tr_3' => $target_i2_tr3,
+                        'target_setahun' => $target_i2_tr4,
+                        'realisasi_tr_1' => $realisasi_i2_tr1,
+                        'realisasi_tr_2' => $realisasi_i2_tr2,
+                        'realisasi_tr_3' => $realisasi_i2_tr3,
+                        'realisasi_setahun' => $realisasi_i2_tr4,
+                    ]);
+            };
+            if (($kode_indikator->kode_indikator == 'i3') or ($kode_indikator->kode_indikator == 'i4') or ($kode_indikator->kode_indikator == 'i5')) {
+                $sub_indikator = DB::table('kinerja_bulanans')
+                    ->select('*')
+                    ->where('kinerja_bulanans.kode_satker', '=', $satker->kode_satker)
+                    ->where('kinerja_bulanans.kode_indikator', '=', $kode_indikator->kode_indikator)
+                    ->get();
+                $target_i_tr1 = $sub_indikator[1]->target_tr_1 / $sub_indikator[2]->target_tr_4 * 100;
+                $target_i_tr2 = $sub_indikator[1]->target_tr_2 / $sub_indikator[2]->target_tr_4 * 100;
+                $target_i_tr3 = $sub_indikator[1]->target_tr_3 / $sub_indikator[2]->target_tr_4 * 100;
+                $target_i_tr4 = $sub_indikator[1]->target_tr_4 / $sub_indikator[2]->target_tr_4 * 100;
+                $realisasi_i_tr1 = $sub_indikator[1]->realisasi_tr_1 / $sub_indikator[2]->target_tr_4 * 100;
+                $realisasi_i_tr2 = $sub_indikator[1]->realisasi_tr_2 / $sub_indikator[2]->target_tr_4 * 100;
+                $realisasi_i_tr3 = $sub_indikator[1]->realisasi_tr_3 / $sub_indikator[2]->target_tr_4 * 100;
+                $realisasi_i_tr4 = $sub_indikator[1]->realisasi_setahun / $sub_indikator[2]->target_tr_4 * 100;
+                DB::table('kinerja_bulanans')
+                    ->where('id', '=', $sub_indikator[0]->id)
+                    ->update([
+                        'target_tr_1' => $target_i_tr1,
+                        'target_tr_2' => $target_i_tr2,
+                        'target_tr_3' => $target_i_tr3,
+                        'target_tr_4' => $target_i_tr4,
+                        'realisasi_tr_1' => $realisasi_i_tr1,
+                        'realisasi_tr_2' => $realisasi_i_tr2,
+                        'realisasi_tr_3' => $realisasi_i_tr3,
+                        'realisasi_setahun' => $realisasi_i_tr4,
+                    ]);
+                DB::table('angka_kinerjas')
+                    ->where('satker', '=', $satker->kode_satker)
+                    ->where('kode_indikator', '=', $kode_indikator->kode_indikator)
+                    ->update([
+                        'target_tr_1' => $target_i_tr1,
+                        'target_tr_2' => $target_i_tr2,
+                        'target_tr_3' => $target_i_tr3,
+                        'target_setahun' => $target_i_tr4,
+                        'realisasi_tr_1' => $realisasi_i_tr1,
+                        'realisasi_tr_2' => $realisasi_i_tr2,
+                        'realisasi_tr_3' => $realisasi_i_tr3,
+                        'realisasi_setahun' => $realisasi_i_tr4,
+                    ]);
+            };
+        } else {
+            $indikator = 2;
+            $datasuplmen = DB::table('kinerja_bulanans')
+                ->select('*')
+                ->where('kinerja_bulanans.id', '=', $request->id)
+                ->first();
+            DB::table('kinerja_bulanans')
+                ->where('id', '=', $request->id)
+                ->update([
+                    'target_tr_4' => $this->formatToEnglishDecimal($request->target_tr_4),
+                    'realisasi_tr_1' => $this->formatToEnglishDecimal($request->realisasi_tr_1),
+                    'realisasi_tr_2' => $this->formatToEnglishDecimal($request->realisasi_tr_2),
+                    'realisasi_tr_3' => $this->formatToEnglishDecimal($request->realisasi_tr_3),
+                    'realisasi_setahun' => $this->formatToEnglishDecimal($request->realisasi_setahun),
+                ]);
+            DB::table('angka_kinerjas')
+                ->where('satker', '=', $datasuplmen->kode_satker)
+                ->where('kode_indikator', '=', $datasuplmen->kode_indikator)
+                ->update([
+                    'target_setahun' => $this->formatToEnglishDecimal($request->target_tr_4),
+                    'realisasi_tr_1' => $this->formatToEnglishDecimal($request->realisasi_tr_1),
+                    'realisasi_tr_2' => $this->formatToEnglishDecimal($request->realisasi_tr_2),
+                    'realisasi_tr_3' => $this->formatToEnglishDecimal($request->realisasi_tr_3),
+                    'realisasi_setahun' => $this->formatToEnglishDecimal($request->realisasi_setahun),
+                ]);
+        };
+
+        return redirect('/entri-kinerja?satker=' . $satker->kode_satker . '&indikator=' . $indikator)->with(['id' => $request->id]);
     }
 }

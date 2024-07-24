@@ -27,34 +27,17 @@
     <link rel="stylesheet" href="{{ asset('file/') }}/select2.min.css">
     <link rel="stylesheet" href="{{ asset('file/') }}/select2-bootstrap4.min.css">
 
+    {{-- Style Datatable --}}
     <style>
-        a {
-            text-decoration: none !important;
-        }
-
-        th {
-            text-align: center !important;
-        }
-
         th,
-        td,
-        p {
-            font-size: 10px;
-            text-align: center;
-            vertical-align: middle;
+        td {
+            font-size: 11px;
+            text-align: center !important;
+            vertical-align: top;
         }
 
         div.dataTables_wrapper {
             margin: 0 auto;
-        }
-
-        button {
-            text-align: left;
-            background: transparent;
-            color: black;
-            border: none;
-            cursor: pointer;
-            padding: 10px 0;
         }
 
         @media (min-width: 1600px) {
@@ -148,6 +131,68 @@
             </div>
         </div>
     </div>
+
+    {{-- MODAL EDIT --}}
+    <div class="modal fade" id="update-kinerja" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background: #3ecbff">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Indikator Kinerja</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" action="/update-kinerja" enctype="multipart/form-data" id="form-update">
+                    @csrf
+                    <div class="modal-body">
+                        <input style="font-size: 8pt" type="text" name="id" hidden>
+                        <div class="mb-3">
+                            <label id="keterangan1"></label>
+                            <input type="text" class="form-control" name="target_tr_1" id="periode">
+                        </div>
+                        {{-- <div class="mb-3">
+                            <label for="formFile" class="form-label">Upload Bukti Dukung</label>
+                            <input class="form-control" type="file" id="formFile">
+                        </div> --}}
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update!!!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal-dialog -->
+    {{-- <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-gradient-primary">
+                    <h4 class="modal-title">Update Kinerja</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body m-2">
+                    <form method="POST" action="/update-kinerja" enctype="multipart/form-data" id="form-update">
+                        @csrf
+                        <div class="card-body">
+                            <div class="form-group">
+                                <input type="text" name="id" class="form-control"
+                                    placeholder="Alokasi Beban Tugas" hidden>
+                                <label id="keterangan1"></label>
+                                <input type="text" name="target_tr_1" class="form-control">
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn bg-gradient-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> --}}
+    <!-- /.modal-dialog -->
+    </div>
+    {{-- MODAL EDIT --}}
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
@@ -163,6 +208,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+
     <!-- Select2 -->
     <script src="{{ asset('file/') }}/select2.full.min.js"></script>
     <script>
@@ -175,10 +221,13 @@
             })
         });
     </script>
+
     <!-- SweetAlert2 -->
     <script src="{{ asset('file/') }}/sweetalert2.min.js"></script>
+
+    <!-- DataTabel -->
     <script>
-        var table = $('#tabel1').DataTable({
+        var table = $('#tabeliku').DataTable({
             "columnDefs": [{
                     width: '0.1vw',
                     targets: 0
@@ -312,7 +361,7 @@
             }
         });
 
-        var table2 = $('#tabel2').DataTable({
+        var table2 = $('#tabeliks').DataTable({
             "columnDefs": [{
                     width: '0.1vw',
                     targets: 0
@@ -373,11 +422,9 @@
                 start: 3
             }
         });
-
-        document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById('fokus1').focus();
-        });
     </script>
+
+    <!-- Loading Page -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const loadingOverlay = document.getElementById("loading-overlay");
@@ -388,13 +435,21 @@
                 loadingOverlay.style.opacity = '0';
                 setTimeout(() => {
                     loadingOverlay.style.display = 'none';
-                    content.style.display = 'block';
                 }, 500);
             }, 10); // Adjust the delay as needed
         });
     </script>
 
+    <!-- Tooltip Icon -->
     <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+
+    <!-- Tanda Ribuan -->
+    {{-- <script>
         function formatNumber(num) {
             return num.toLocaleString('id-ID', {
                 minimumFractionDigits: 2,
@@ -446,7 +501,21 @@
             // Here you can send dataToSubmit to your server
             console.log(dataToSubmit);
         });
+    </script> --}}
+
+    <!-- Modal Update Kinerja -->
+    <script>
+        function showKegiatanMitra(id, tr, periode, ket_periode) {
+            console.log(tr, periode);
+            $("#update-kinerja").modal('show');
+            $("#form-update [name='id']").val(id);
+            $("#form-update [id='keterangan1']").val(periode);
+            $("#form-update [name='target_tr_1']").val(tr);
+            document.getElementById("periode").id = periode;
+            document.getElementById('keterangan1').innerHTML = ket_periode;
+        }
     </script>
+
 </body>
 
 </html>

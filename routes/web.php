@@ -12,4 +12,5 @@ Route::controller(DashboardkinerjaController::class)->group(function () {
     Route::get('/input-dashboard-kinerja', 'input');
     Route::get('/entri-kinerja', 'entri');
     Route::post('/update-data/{id}', 'update');
+    Route::post('/update-kinerja', 'updatekinerja');
 });
