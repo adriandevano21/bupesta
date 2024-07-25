@@ -133,25 +133,60 @@
     </div>
 
     {{-- MODAL EDIT --}}
-    <div class="modal fade" id="update-kinerja" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="update-target-kinerja" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header" style="background: #3ecbff">
-                    <h5 class="modal-title" id="exampleModalLabel">Update Indikator Kinerja</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Update Target Kinerja</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="POST" action="/update-kinerja" enctype="multipart/form-data" id="form-update">
+                <form method="POST" action="/update-kinerja" enctype="multipart/form-data" id="form-update-target">
                     @csrf
                     <div class="modal-body">
                         <input style="font-size: 8pt" type="text" name="id" hidden>
                         <div class="mb-3">
-                            <label id="keterangan1"></label>
-                            <input type="text" class="form-control" name="target_tr_1" id="periode">
+                            <input type="text" class="form-control" name="keterangan" id="keterangan" disabled>
+                            {{-- <label nama="keterangan" id="keterangan1"></label> --}}
+                            <input type="text" class="form-control" name="periode" id="periode-target">
                         </div>
                         {{-- <div class="mb-3">
                             <label for="formFile" class="form-label">Upload Bukti Dukung</label>
                             <input class="form-control" type="file" id="formFile">
                         </div> --}}
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update!!!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="update-realisasi-kinerja" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background: #3ecbff">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Realisasi Kinerja</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" action="/update-kinerja" enctype="multipart/form-data"
+                    id="form-update-realisasi">
+                    @csrf
+                    <div class="modal-body">
+                        <input style="font-size: 8pt" type="text" name="id" hidden>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="keterangan" id="keterangan" disabled>
+                            {{-- <label nama="keterangan" id="keterangan1"></label> --}}
+                            <input type="text" class="form-control" name="periode" id="periode-realisasi">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile-BuktiDukung" class="form-label">Upload Bukti Dukung</label>
+                            <input class="form-control" type="file" id="formFile-BuktiDukung">
+                        </div>
 
                     </div>
                     <div class="modal-footer">
@@ -505,14 +540,22 @@
 
     <!-- Modal Update Kinerja -->
     <script>
-        function showKegiatanMitra(id, tr, periode, ket_periode) {
-            console.log(tr, periode);
-            $("#update-kinerja").modal('show');
-            $("#form-update [name='id']").val(id);
-            $("#form-update [id='keterangan1']").val(periode);
-            $("#form-update [name='target_tr_1']").val(tr);
-            document.getElementById("periode").id = periode;
-            document.getElementById('keterangan1').innerHTML = ket_periode;
+        function showEntriTarget(id, tr, periode, ket_periode) {
+            console.log(id, tr, periode, ket_periode);
+            $("#update-target-kinerja").modal('show');
+            $("#form-update-target [name='id']").val(id);
+            $("#form-update-target [id='periode-target']").val(tr);
+            $("#form-update-target [name='keterangan']").val(ket_periode);
+            document.getElementById("periode-target").setAttribute("name", periode);
+        }
+
+        function showEntriRealisasi(id, tr, periode, ket_periode) {
+            console.log(id, tr, periode, ket_periode);
+            $("#update-realisasi-kinerja").modal('show');
+            $("#form-update-realisasi [name='id']").val(id);
+            $("#form-update-realisasi [id='periode-realisasi']").val(tr);
+            $("#form-update-realisasi [name='keterangan']").val(ket_periode);
+            document.getElementById("periode-realisasi").setAttribute("name", periode);
         }
     </script>
 

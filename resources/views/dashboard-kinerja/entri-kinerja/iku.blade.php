@@ -68,8 +68,138 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Update Kinerja">
-                                        <a onclick="showKegiatanMitra('{{ $databulanan->id }}','{{ $databulanan->target_tr_1 }}','target_tr_1','Target Kumulatif Triwulan 1')"
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Update Target">
+                                        <a onclick="showEntriTarget('{{ $databulanan->id }}','{{ $databulanan->target_tr_1 }}','target_tr_1','Target Kumulatif Triwulan 1')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
+                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-paper-plane"></i></a>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="background: #fffd98 !important">
+                            <div class="col">
+                                {{ $databulanan->target_tr_2 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Update Target">
+                                        <a onclick="showEntriTarget('{{ $databulanan->id }}','{{ $databulanan->target_tr_2 }}','target_tr_2','Target Kumulatif Triwulan 2')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
+                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-paper-plane"></i></a>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="background: #fffd98 !important">
+                            <div class="col">
+                                {{ $databulanan->target_tr_3 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Update Target">
+                                        <a onclick="showEntriTarget('{{ $databulanan->id }}','{{ $databulanan->target_tr_3 }}','target_tr_3','Target Kumulatif Triwulan 3')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
+                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-paper-plane"></i></a>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="background: #fffd98 !important">
+                            <div class="col">
+                                {{ $databulanan->target_tr_4 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Update Target">
+                                        <a onclick="showEntriTarget('{{ $databulanan->id }}','{{ $databulanan->target_tr_4 }}','target_tr_4','Target Kumulatif Triwulan 4')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
+                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-paper-plane"></i></a>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="background: #fffd98 !important">
+                            <div class="col">
+                                {{ $databulanan->realisasi_b1 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Update Realisasi">
+                                        <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b1 }}','realisasi_b1','Realisasi Bulan Januari')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
+                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-paper-plane"></i></a>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="background: #fffd98 !important">
+                            <div class="col">
+                                {{ $databulanan->realisasi_b2 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Update Realisasi">
+                                        <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b2 }}','realisasi_b2','Realisasi Bulan Februari')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
+                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-paper-plane"></i></a>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="background: #fffd98 !important">
+                            <div class="col">
+                                {{ $databulanan->realisasi_b3 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Update Realisasi">
+                                        <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b3 }}','realisasi_b3','Realisasi Bulan Maret')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
+                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-paper-plane"></i></a>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                {{ $databulanan->realisasi_tr_1 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Input Analisis Pencapaian Triwulan 1">
+                                        <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b3 }}','realisasi_b3','Realisasi Bulan Maret')"
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
                                     </button>
@@ -77,61 +207,220 @@
                             </div>
                         </td>
                         <td style="background: #fffd98 !important">
-                            {{ $databulanan->target_tr_2 }}
+                            <div class="col">
+                                {{ $databulanan->realisasi_b4 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Update Realisasi">
+                                        <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b4 }}','realisasi_b4','Realisasi Bulan April')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
+                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-paper-plane"></i></a>
+                                    </button>
+                                </div>
+                            </div>
                         </td>
                         <td style="background: #fffd98 !important">
-                            {{ $databulanan->target_tr_3 }}
+                            <div class="col">
+                                {{ $databulanan->realisasi_b5 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Update Realisasi">
+                                        <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b5 }}','realisasi_b5','Realisasi Bulan April')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
+                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-paper-plane"></i></a>
+                                    </button>
+                                </div>
+                            </div>
                         </td>
                         <td style="background: #fffd98 !important">
-                            {{ $databulanan->target_tr_4 }}
-                        </td>
-                        <td style="background: #fffd98 !important">
-                            {{ $databulanan->realisasi_b1 }}
-                        </td>
-                        <td style="background: #fffd98 !important">
-                            {{ $databulanan->realisasi_b2 }}
-                        </td>
-                        <td style="background: #fffd98 !important">
-                            {{ $databulanan->realisasi_b3 }}
+                            <div class="col">
+                                {{ $databulanan->realisasi_b6 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Update Realisasi">
+                                        <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b6 }}','realisasi_b6','Realisasi Bulan April')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
+                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-paper-plane"></i></a>
+                                    </button>
+                                </div>
+                            </div>
                         </td>
                         <td>
-                            {{ $databulanan->realisasi_tr_1 }}
+                            <div class="col">
+                                {{ $databulanan->realisasi_tr_2 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Input Analisis Pencapaian Triwulan 1">
+                                        <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b3 }}','realisasi_b3','Realisasi Bulan Maret')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                </div>
+                            </div>
                         </td>
                         <td style="background: #fffd98 !important">
-                            {{ $databulanan->realisasi_b4 }}
+                            <div class="col">
+                                {{ $databulanan->realisasi_b7 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Update Realisasi">
+                                        <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b7 }}','realisasi_b7','Realisasi Bulan April')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
+                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-paper-plane"></i></a>
+                                    </button>
+                                </div>
+                            </div>
                         </td>
                         <td style="background: #fffd98 !important">
-                            {{ $databulanan->realisasi_b5 }}
+                            <div class="col">
+                                {{ $databulanan->realisasi_b8 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Update Realisasi">
+                                        <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b8 }}','realisasi_b8','Realisasi Bulan April')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
+                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-paper-plane"></i></a>
+                                    </button>
+                                </div>
+                            </div>
                         </td>
                         <td style="background: #fffd98 !important">
-                            {{ $databulanan->realisasi_b6 }}
+                            <div class="col">
+                                {{ $databulanan->realisasi_b9 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Update Realisasi">
+                                        <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b9 }}','realisasi_b9','Realisasi Bulan April')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
+                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-paper-plane"></i></a>
+                                    </button>
+                                </div>
+                            </div>
                         </td>
                         <td>
-                            {{ $databulanan->realisasi_tr_2 }}
+                            <div class="col">
+                                {{ $databulanan->realisasi_tr_3 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Input Analisis Pencapaian Triwulan 1">
+                                        <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b3 }}','realisasi_b3','Realisasi Bulan Maret')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                </div>
+                            </div>
                         </td>
                         <td style="background: #fffd98 !important">
-                            {{ $databulanan->realisasi_b7 }}
+                            <div class="col">
+                                {{ $databulanan->realisasi_b10 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Update Realisasi">
+                                        <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b10 }}','realisasi_b10','Realisasi Bulan April')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
+                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-paper-plane"></i></a>
+                                    </button>
+                                </div>
+                            </div>
                         </td>
                         <td style="background: #fffd98 !important">
-                            {{ $databulanan->realisasi_b8 }}
+                            <div class="col">
+                                {{ $databulanan->realisasi_b11 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Update Realisasi">
+                                        <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b11 }}','realisasi_b11','Realisasi Bulan April')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
+                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-paper-plane"></i></a>
+                                    </button>
+                                </div>
+                            </div>
                         </td>
                         <td style="background: #fffd98 !important">
-                            {{ $databulanan->realisasi_b9 }}
+                            <div class="col">
+                                {{ $databulanan->realisasi_b12 }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Update Realisasi">
+                                        <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b12 }}','realisasi_b12','Realisasi Bulan April')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
+                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-paper-plane"></i></a>
+                                    </button>
+                                </div>
+                            </div>
                         </td>
                         <td>
-                            {{ $databulanan->realisasi_tr_3 }}
-                        </td>
-                        <td style="background: #fffd98 !important">
-                            {{ $databulanan->realisasi_b10 }}
-                        </td>
-                        <td style="background: #fffd98 !important">
-                            {{ $databulanan->realisasi_b11 }}
-                        </td>
-                        <td style="background: #fffd98 !important">
-                            {{ $databulanan->realisasi_b12 }}
-                        </td>
-                        <td>
-                            {{ $databulanan->realisasi_setahun }}
+                            <div class="col">
+                                {{ $databulanan->realisasi_setahun }}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Input Analisis Pencapaian Triwulan 1">
+                                        <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b3 }}','realisasi_b3','Realisasi Bulan Maret')"
+                                            class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
+                                                class="fas fa-edit"></i></a>
+                                    </button>
+                                </div>
+                            </div>
                         </td>
                         <td>
                             @if ($databulanan->target_tr_1 == 0)

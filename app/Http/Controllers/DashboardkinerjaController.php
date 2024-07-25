@@ -1431,59 +1431,137 @@ class DashboardkinerjaController extends Controller
 
     public function updatekinerja(Request $request)
     {
-        dd($request);
-
+        // dd($request);
         $satker = DB::table('kinerja_bulanans')
             ->select('kode_satker')
             ->where('kinerja_bulanans.id', '=', $request->id)
             ->first();
         $kode_indikator = DB::table('kinerja_bulanans')
-            ->select('kode_indikator', 'kode_sub1_indikator', 'status')
+            ->select('*')
             ->where('kinerja_bulanans.id', '=', $request->id)
             ->first();
 
-        // dd(($request->realisasi_b1));
+        if ($request->target_tr_1 == null) {
+            $target_tr_1 = $kode_indikator->target_tr_1;
+        } else {
+            $target_tr_1 = $request->target_tr_1;
+        };
+        if ($request->target_tr_2 == null) {
+            $target_tr_2 = $kode_indikator->target_tr_2;
+        } else {
+            $target_tr_2 = $request->target_tr_2;
+        };
+        if ($request->target_tr_3 == null) {
+            $target_tr_3 = $kode_indikator->target_tr_3;
+        } else {
+            $target_tr_3 = $request->target_tr_3;
+        };
+        if ($request->target_tr_4 == null) {
+            $target_tr_4 = $kode_indikator->target_tr_4;
+        } else {
+            $target_tr_4 = $request->target_tr_4;
+        };
+        if ($request->realisasi_b1 == null) {
+            $realisasi_b1 = $kode_indikator->realisasi_b1;
+        } else {
+            $realisasi_b1 = $request->realisasi_b1;
+        };
+        if ($request->realisasi_b2 == null) {
+            $realisasi_b2 = $kode_indikator->realisasi_b2;
+        } else {
+            $realisasi_b2 = $request->realisasi_b2;
+        };
+        if ($request->realisasi_b3 == null) {
+            $realisasi_b3 = $kode_indikator->realisasi_b3;
+        } else {
+            $realisasi_b3 = $request->realisasi_b3;
+        };
+        if ($request->realisasi_b4 == null) {
+            $realisasi_b4 = $kode_indikator->realisasi_b4;
+        } else {
+            $realisasi_b4 = $request->realisasi_b4;
+        };
+        if ($request->realisasi_b5 == null) {
+            $realisasi_b5 = $kode_indikator->realisasi_b5;
+        } else {
+            $realisasi_b5 = $request->realisasi_b5;
+        };
+        if ($request->realisasi_b6 == null) {
+            $realisasi_b6 = $kode_indikator->realisasi_b6;
+        } else {
+            $realisasi_b6 = $request->realisasi_b6;
+        };
+        if ($request->realisasi_b7 == null) {
+            $realisasi_b7 = $kode_indikator->realisasi_b7;
+        } else {
+            $realisasi_b7 = $request->realisasi_b7;
+        };
+        if ($request->realisasi_b8 == null) {
+            $realisasi_b8 = $kode_indikator->realisasi_b8;
+        } else {
+            $realisasi_b8 = $request->realisasi_b8;
+        };
+        if ($request->realisasi_b9 == null) {
+            $realisasi_b9 = $kode_indikator->realisasi_b9;
+        } else {
+            $realisasi_b9 = $request->realisasi_b9;
+        };
+        if ($request->realisasi_b10 == null) {
+            $realisasi_b10 = $kode_indikator->realisasi_b10;
+        } else {
+            $realisasi_b10 = $request->realisasi_b10;
+        };
+        if ($request->realisasi_b11 == null) {
+            $realisasi_b11 = $kode_indikator->realisasi_b11;
+        } else {
+            $realisasi_b11 = $request->realisasi_b11;
+        };
+        if ($request->realisasi_b12 == null) {
+            $realisasi_b12 = $kode_indikator->realisasi_b12;
+        } else {
+            $realisasi_b12 = $request->realisasi_b12;
+        };
 
         if ($kode_indikator->status == 'utama') {
             $indikator = 1;
-            $realisasi_tr_1 = $this->formatToEnglishDecimal($request->realisasi_b1) + $this->formatToEnglishDecimal($request->realisasi_b2) + $this->formatToEnglishDecimal($request->realisasi_b3);
-            $realisasi_tr_2 = $realisasi_tr_1 + $this->formatToEnglishDecimal($request->realisasi_b4) + $this->formatToEnglishDecimal($request->realisasi_b5) + $this->formatToEnglishDecimal($request->realisasi_b6);
-            $realisasi_tr_3 = $realisasi_tr_2 + $this->formatToEnglishDecimal($request->realisasi_b7) + $this->formatToEnglishDecimal($request->realisasi_b8) + $this->formatToEnglishDecimal($request->realisasi_b9);
-            $realisasi_tr_4 = $realisasi_tr_3 + $this->formatToEnglishDecimal($request->realisasi_b10) + $this->formatToEnglishDecimal($request->realisasi_b11) + $this->formatToEnglishDecimal($request->realisasi_b12);
+            $realisasi_tr_1 = $realisasi_b1 + $realisasi_b2 + $realisasi_b3;
+            $realisasi_tr_2 = $realisasi_tr_1 + $realisasi_b4 + $realisasi_b5 + $realisasi_b6;
+            $realisasi_tr_3 = $realisasi_tr_2 + $realisasi_b7 + $realisasi_b8 + $realisasi_b9;
+            $realisasi_tr_4 = $realisasi_tr_3 + $realisasi_b10 + $realisasi_b11 + $realisasi_b12;
             if ($kode_indikator->kode_sub1_indikator == 1) {
                 DB::table('angka_kinerjas')
                     ->where('satker', '=', $satker->kode_satker)
                     ->where('kode_indikator', '=', $kode_indikator->kode_indikator)
                     ->update([
-                        'target_setahun' => $this->formatToEnglishDecimal($request->target_tr_4),
+                        'target_setahun' => $target_tr_4,
                         'realisasi_setahun' => $realisasi_tr_4,
-                        'target_tr_1' => $this->formatToEnglishDecimal($request->target_tr_1),
+                        'target_tr_1' => $target_tr_1,
                         'realisasi_tr_1' => $realisasi_tr_1,
-                        'target_tr_2' => $this->formatToEnglishDecimal($request->target_tr_2),
+                        'target_tr_2' => $target_tr_2,
                         'realisasi_tr_2' => $realisasi_tr_2,
-                        'target_tr_3' => $this->formatToEnglishDecimal($request->target_tr_3),
+                        'target_tr_3' => $target_tr_3,
                         'realisasi_tr_3' => $realisasi_tr_3
                     ]);
             };
             DB::table('kinerja_bulanans')
                 ->where('id', '=', $request->id)
                 ->update([
-                    'target_tr_1' => $this->formatToEnglishDecimal($request->target_tr_1),
-                    'target_tr_2' => $this->formatToEnglishDecimal($request->target_tr_2),
-                    'target_tr_3' => $this->formatToEnglishDecimal($request->target_tr_3),
-                    'target_tr_4' => $this->formatToEnglishDecimal($request->target_tr_4),
-                    'realisasi_b1' => $this->formatToEnglishDecimal($request->realisasi_b1),
-                    'realisasi_b2' => $this->formatToEnglishDecimal($request->realisasi_b2),
-                    'realisasi_b3' => $this->formatToEnglishDecimal($request->realisasi_b3),
-                    'realisasi_b4' => $this->formatToEnglishDecimal($request->realisasi_b4),
-                    'realisasi_b5' => $this->formatToEnglishDecimal($request->realisasi_b5),
-                    'realisasi_b6' => $this->formatToEnglishDecimal($request->realisasi_b6),
-                    'realisasi_b7' => $this->formatToEnglishDecimal($request->realisasi_b7),
-                    'realisasi_b8' => $this->formatToEnglishDecimal($request->realisasi_b8),
-                    'realisasi_b9' => $this->formatToEnglishDecimal($request->realisasi_b9),
-                    'realisasi_b10' => $this->formatToEnglishDecimal($request->realisasi_b10),
-                    'realisasi_b11' => $this->formatToEnglishDecimal($request->realisasi_b11),
-                    'realisasi_b12' => $this->formatToEnglishDecimal($request->realisasi_b12),
+                    'target_tr_1' => $target_tr_1,
+                    'target_tr_2' => $target_tr_2,
+                    'target_tr_3' => $target_tr_3,
+                    'target_tr_4' => $target_tr_4,
+                    'realisasi_b1' => $realisasi_b1,
+                    'realisasi_b2' => $realisasi_b2,
+                    'realisasi_b3' => $realisasi_b3,
+                    'realisasi_b4' => $realisasi_b4,
+                    'realisasi_b5' => $realisasi_b5,
+                    'realisasi_b6' => $realisasi_b6,
+                    'realisasi_b7' => $realisasi_b7,
+                    'realisasi_b8' => $realisasi_b8,
+                    'realisasi_b9' => $realisasi_b9,
+                    'realisasi_b10' => $realisasi_b10,
+                    'realisasi_b11' => $realisasi_b11,
+                    'realisasi_b12' => $realisasi_b12,
                     'realisasi_tr_1' => $realisasi_tr_1,
                     'realisasi_tr_2' => $realisasi_tr_2,
                     'realisasi_tr_3' => $realisasi_tr_3,
