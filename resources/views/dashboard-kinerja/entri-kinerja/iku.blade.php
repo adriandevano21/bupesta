@@ -199,7 +199,7 @@
                                 <div class="col">
                                     <button data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="Input Analisis Pencapaian Triwulan 1">
-                                        <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b3 }}','realisasi_b3','Realisasi Bulan Maret')"
+                                        <a onclick="showEntriAnalisisTr('{{ $databulanan->id }}','{{ $databulanan->realisasi_tr_1 }}','realisasi_tr_1','Realisasi Triwulan 1')"
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
                                     </button>
@@ -270,7 +270,7 @@
                             <div class="row">
                                 <div class="col">
                                     <button data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="Input Analisis Pencapaian Triwulan 1">
+                                        title="Input Analisis Pencapaian Triwulan 2">
                                         <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b3 }}','realisasi_b3','Realisasi Bulan Maret')"
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
@@ -342,7 +342,7 @@
                             <div class="row">
                                 <div class="col">
                                     <button data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="Input Analisis Pencapaian Triwulan 1">
+                                        title="Input Analisis Pencapaian Triwulan 3">
                                         <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b3 }}','realisasi_b3','Realisasi Bulan Maret')"
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
@@ -414,7 +414,7 @@
                             <div class="row">
                                 <div class="col">
                                     <button data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                        title="Input Analisis Pencapaian Triwulan 1">
+                                        title="Input Analisis Pencapaian Triwulan 4">
                                         <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b3 }}','realisasi_b3','Realisasi Bulan Maret')"
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>

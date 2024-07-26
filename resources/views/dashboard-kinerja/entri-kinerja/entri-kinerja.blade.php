@@ -133,6 +133,7 @@
     </div>
 
     {{-- MODAL EDIT --}}
+    {{-- Target --}}
     <div class="modal fade" id="update-target-kinerja" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -165,6 +166,7 @@
         </div>
     </div>
 
+    {{-- Realisasi --}}
     <div class="modal fade" id="update-realisasi-kinerja" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -187,6 +189,38 @@
                             <label for="formFile-BuktiDukung" class="form-label">Upload Bukti Dukung</label>
                             <input class="form-control" type="file" id="formFile-BuktiDukung">
                         </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update!!!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- Analisis Triwulanan --}}
+    <div class="modal fade" id="update-analisis-tr" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background: #3ecbff">
+                    <h5 class="modal-title" id="exampleModalLabel">Input Analisis Triwulanan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" action="/analisis-triwulanan" enctype="multipart/form-data"
+                    id="form-update-analtri">
+                    @csrf
+                    <div class="modal-body">
+                        <input style="font-size: 8pt" type="text" name="id" hidden>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="keterangan" id="keterangan" disabled>
+                            {{-- <label nama="keterangan" id="keterangan1"></label> --}}
+                            <input type="text" class="form-control" name="periode" id="periode-analtri">
+                        </div>
+                        {{-- <div class="mb-3">
+                        <label for="formFile" class="form-label">Upload Bukti Dukung</label>
+                        <input class="form-control" type="file" id="formFile">
+                    </div> --}}
 
                     </div>
                     <div class="modal-footer">
@@ -197,37 +231,8 @@
             </div>
         </div>
     </div>
-    <!-- /.modal-dialog -->
-    {{-- <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-gradient-primary">
-                    <h4 class="modal-title">Update Kinerja</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body m-2">
-                    <form method="POST" action="/update-kinerja" enctype="multipart/form-data" id="form-update">
-                        @csrf
-                        <div class="card-body">
-                            <div class="form-group">
-                                <input type="text" name="id" class="form-control"
-                                    placeholder="Alokasi Beban Tugas" hidden>
-                                <label id="keterangan1"></label>
-                                <input type="text" name="target_tr_1" class="form-control">
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn bg-gradient-primary">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div> --}}
-    <!-- /.modal-dialog -->
-    </div>
-    {{-- MODAL EDIT --}}
 
+    {{-- SCRIPT --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
@@ -556,6 +561,15 @@
             $("#form-update-realisasi [id='periode-realisasi']").val(tr);
             $("#form-update-realisasi [name='keterangan']").val(ket_periode);
             document.getElementById("periode-realisasi").setAttribute("name", periode);
+        }
+
+        function showEntriAnalisisTr(id, tr, periode, ket_periode) {
+            console.log(id, tr, periode, ket_periode);
+            $("#update-analisis-tr").modal('show');
+            $("#form-update-analtri [name='id']").val(id);
+            $("#form-update-analtri [id='periode-analtri']").val(tr);
+            $("#form-update-analtri [name='keterangan']").val(ket_periode);
+            document.getElementById("periode-analtri").setAttribute("name", periode);
         }
     </script>
 
