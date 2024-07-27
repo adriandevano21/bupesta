@@ -189,6 +189,7 @@
                             <label for="formFile-BuktiDukung" class="form-label">Upload Bukti Dukung</label>
                             <input class="form-control" type="file" id="formFile-BuktiDukung">
                         </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -215,7 +216,7 @@
                         <div class="mb-3">
                             <input type="text" class="form-control" name="keterangan" id="keterangan" disabled>
                             {{-- <label nama="keterangan" id="keterangan1"></label> --}}
-                            <input type="text" class="form-control" name="periode" id="periode-analtri">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                         {{-- <div class="mb-3">
                         <label for="formFile" class="form-label">Upload Bukti Dukung</label>
