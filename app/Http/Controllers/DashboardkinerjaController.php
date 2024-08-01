@@ -1769,4 +1769,17 @@ class DashboardkinerjaController extends Controller
 
         return redirect('/entri-kinerja?satker=' . $satker->kode_satker . '&indikator=' . $indikator)->with(['id' => $request->id]);
     }
+
+    public function inputanalisistriwulanan(Request $request)
+    {
+        DB::table('analisis_triwulans')
+            ->insert([
+                'id_kinerja_bulanan' => $request->id,
+                'periode' => $request->periodetr,
+                'analisis_triwulan' => $request->analisis_triwulan,
+                'created_by' => 'adrian.devano',
+                'created_at' => date("Y-m-d H:i:s", strtotime('now'))
+            ]);
+        return redirect('/entri-kinerja');
+    }
 }

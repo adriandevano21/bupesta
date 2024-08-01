@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('satkers', function (Blueprint $table) {
+        Schema::create('analisis_triwulans', function (Blueprint $table) {
             $table->id();
+            $table->string('id_kinerja_bulanan');
+            $table->string('periode');
+            $table->string('analisis_triwulan');
+            $table->string('created_by');
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('satkers');
+        Schema::dropIfExists('analisis_triwulans');
     }
 };

@@ -213,10 +213,11 @@
                     @csrf
                     <div class="modal-body">
                         <input style="font-size: 8pt" type="text" name="id" hidden>
+                        <input style="font-size: 8pt" type="text" name="periodetr" hidden>
                         <div class="mb-3">
                             <input type="text" class="form-control" name="keterangan" id="keterangan" disabled>
                             {{-- <label nama="keterangan" id="keterangan1"></label> --}}
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control" rows="3" name="analisis_triwulan"></textarea>
                         </div>
                         {{-- <div class="mb-3">
                         <label for="formFile" class="form-label">Upload Bukti Dukung</label>
@@ -568,9 +569,8 @@
             console.log(id, tr, periode, ket_periode);
             $("#update-analisis-tr").modal('show');
             $("#form-update-analtri [name='id']").val(id);
-            $("#form-update-analtri [id='periode-analtri']").val(tr);
+            $("#form-update-analtri [name='periodetr']").val(periode);
             $("#form-update-analtri [name='keterangan']").val(ket_periode);
-            document.getElementById("periode-analtri").setAttribute("name", periode);
         }
     </script>
 
