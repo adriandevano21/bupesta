@@ -73,10 +73,6 @@
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
                                     </button>
-                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
-                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
-                                                class="fas fa-paper-plane"></i></a>
-                                    </button>
                                 </div>
                             </div>
                         </td>
@@ -90,10 +86,6 @@
                                         <a onclick="showEntriTarget('{{ $databulanan->id }}','{{ $databulanan->target_tr_2 }}','target_tr_2','Target Kumulatif Triwulan 2')"
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
-                                    </button>
-                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
-                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
-                                                class="fas fa-paper-plane"></i></a>
                                     </button>
                                 </div>
                             </div>
@@ -109,10 +101,6 @@
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
                                     </button>
-                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
-                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
-                                                class="fas fa-paper-plane"></i></a>
-                                    </button>
                                 </div>
                             </div>
                         </td>
@@ -126,10 +114,6 @@
                                         <a onclick="showEntriTarget('{{ $databulanan->id }}','{{ $databulanan->target_tr_4 }}','target_tr_4','Target Kumulatif Triwulan 4')"
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
-                                    </button>
-                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
-                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
-                                                class="fas fa-paper-plane"></i></a>
                                     </button>
                                 </div>
                             </div>
@@ -146,10 +130,6 @@
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
                                     </button>
-                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
-                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
-                                                class="fas fa-paper-plane"></i></a>
-                                    </button>
                                 </div>
                             </div>
                         </td>
@@ -165,10 +145,6 @@
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
                                     </button>
-                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
-                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
-                                                class="fas fa-paper-plane"></i></a>
-                                    </button>
                                 </div>
                             </div>
                         </td>
@@ -183,10 +159,6 @@
                                         <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b3 }}','realisasi_b3','Realisasi Bulan Maret')"
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
-                                    </button>
-                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
-                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
-                                                class="fas fa-paper-plane"></i></a>
                                     </button>
                                 </div>
                             </div>
@@ -218,10 +190,6 @@
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
                                     </button>
-                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
-                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
-                                                class="fas fa-paper-plane"></i></a>
-                                    </button>
                                 </div>
                             </div>
                         </td>
@@ -237,10 +205,6 @@
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
                                     </button>
-                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
-                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
-                                                class="fas fa-paper-plane"></i></a>
-                                    </button>
                                 </div>
                             </div>
                         </td>
@@ -255,10 +219,6 @@
                                         <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b6 }}','realisasi_b6','Realisasi Bulan April')"
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
-                                    </button>
-                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
-                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
-                                                class="fas fa-paper-plane"></i></a>
                                     </button>
                                 </div>
                             </div>
@@ -290,10 +250,6 @@
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
                                     </button>
-                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
-                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
-                                                class="fas fa-paper-plane"></i></a>
-                                    </button>
                                 </div>
                             </div>
                         </td>
@@ -309,10 +265,6 @@
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
                                     </button>
-                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
-                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
-                                                class="fas fa-paper-plane"></i></a>
-                                    </button>
                                 </div>
                             </div>
                         </td>
@@ -327,10 +279,6 @@
                                         <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b9 }}','realisasi_b9','Realisasi Bulan April')"
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
-                                    </button>
-                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
-                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
-                                                class="fas fa-paper-plane"></i></a>
                                     </button>
                                 </div>
                             </div>
@@ -362,10 +310,6 @@
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
                                     </button>
-                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
-                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
-                                                class="fas fa-paper-plane"></i></a>
-                                    </button>
                                 </div>
                             </div>
                         </td>
@@ -381,10 +325,6 @@
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
                                     </button>
-                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
-                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
-                                                class="fas fa-paper-plane"></i></a>
-                                    </button>
                                 </div>
                             </div>
                         </td>
@@ -399,10 +339,6 @@
                                         <a onclick="showEntriRealisasi('{{ $databulanan->id }}','{{ $databulanan->realisasi_b12 }}','realisasi_b12','Realisasi Bulan April')"
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
-                                    </button>
-                                    <button data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ajukan Nilai">
-                                        <a class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
-                                                class="fas fa-paper-plane"></i></a>
                                     </button>
                                 </div>
                             </div>

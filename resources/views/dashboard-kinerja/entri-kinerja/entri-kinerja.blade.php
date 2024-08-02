@@ -180,6 +180,7 @@
                     @csrf
                     <div class="modal-body">
                         <input style="font-size: 8pt" type="text" name="id" hidden>
+                        <input style="font-size: 8pt" type="text" name="periodebul" hidden>
                         <div class="mb-3">
                             <input type="text" class="form-control" name="keterangan" id="keterangan" disabled>
                             {{-- <label nama="keterangan" id="keterangan1"></label> --}}
@@ -187,13 +188,14 @@
                         </div>
                         <div class="mb-3">
                             <label for="formFile-BuktiDukung" class="form-label">Upload Bukti Dukung</label>
-                            <input class="form-control" type="file" id="formFile-BuktiDukung">
+                            <input class="form-control" type="file"
+                                name="formFile-BuktiDukung"id="formFile-BuktiDukung">
                         </div>
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Update!!!</button>
+                        <button type="submit" class="btn btn-primary">Ajukan Nilai</button>
                     </div>
                 </form>
             </div>
@@ -560,6 +562,7 @@
             console.log(id, tr, periode, ket_periode);
             $("#update-realisasi-kinerja").modal('show');
             $("#form-update-realisasi [name='id']").val(id);
+            $("#form-update-realisasi [name='periodebul']").val(periode);
             $("#form-update-realisasi [id='periode-realisasi']").val(tr);
             $("#form-update-realisasi [name='keterangan']").val(ket_periode);
             document.getElementById("periode-realisasi").setAttribute("name", periode);
