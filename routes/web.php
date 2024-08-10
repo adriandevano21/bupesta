@@ -19,5 +19,6 @@ Route::controller(DashboardkinerjaController::class)->group(function () {
 
 Route::controller(EntrikinerjaController::class)->group(function () {
     Route::post('/update-kinerja', 'updatekinerja');
+    Route::post('/pengajuan-kinerja', 'pengajuankinerja');
     Route::post('/analisis-triwulanan', 'inputanalisistriwulanan');
 });

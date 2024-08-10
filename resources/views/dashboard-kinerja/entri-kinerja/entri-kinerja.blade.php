@@ -167,7 +167,7 @@
     </div>
 
     {{-- Realisasi --}}
-    <div class="modal fade" id="update-realisasi-kinerja" tabindex="-1" aria-labelledby="exampleModalLabel"
+    {{-- <div class="modal fade" id="update-realisasi-kinerja" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -183,8 +183,41 @@
                         <input style="font-size: 8pt" type="text" name="periodebul" hidden>
                         <div class="mb-3">
                             <input type="text" class="form-control" name="keterangan" id="keterangan" disabled>
-                            {{-- <label nama="keterangan" id="keterangan1"></label> --}}
                             <input type="text" class="form-control" name="periode" id="periode-realisasi">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile-BuktiDukung" class="form-label">Upload Bukti Dukung</label>
+                            <input class="form-control" type="file"
+                                name="formFile-BuktiDukung"id="formFile-BuktiDukung">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Ajukan Nilai</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> --}}
+    <div class="modal fade" id="update-realisasi-kinerja" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background: #3ecbff">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Realisasi Kinerja</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" action="/pengajuan-kinerja" enctype="multipart/form-data"
+                    id="form-update-realisasi">
+                    @csrf
+                    <div class="modal-body">
+                        <input style="font-size: 8pt" type="text" name="id" hidden>
+                        <input style="font-size: 8pt" type="text" name="periodebul" hidden>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="keterangan" id="keterangan" disabled>
+                            {{-- <label nama="keterangan" id="keterangan1"></label> --}}
+                            <input type="number" class="form-control" name="realisasi">
                         </div>
                         <div class="mb-3">
                             <label for="formFile-BuktiDukung" class="form-label">Upload Bukti Dukung</label>

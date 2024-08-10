@@ -7,8 +7,33 @@ use Illuminate\Support\Facades\DB;
 
 class EntrikinerjaController extends Controller
 {
-    public function pengajuanangka(Request $request)
+    public function pengajuankinerja(Request $request)
     {
+        $satker = DB::table('kinerja_bulanans')
+            ->select('kode_satker')
+            ->where('kinerja_bulanans.id', '=', $request->id)
+            ->first();
+        $kode_indikator = DB::table('kinerja_bulanans')
+            ->select('*')
+            ->where('kinerja_bulanans.id', '=', $request->id)
+            ->first();
+        if ($kode_indikator->status == 'utama') {
+            $indikator = 1;
+        } else {
+            $indikator = 2;
+        };
+
+        DB::table('pengajuan_angkas')
+            ->insert([
+                'id_kinerja_bulanan' => $request->id,
+                'periode' => $request->periodebul,
+                'realisasi' => $request->realisasi,
+                'buktidukung' => $request->file('formFile-BuktiDukung')->getClientOriginalName(),
+                'status' => 'Diajukan',
+                'created_by' => 'adrian.devano',
+                'created_at' => date("Y-m-d H:i:s", strtotime('now'))
+            ]);
+        return redirect('/entri-kinerja?satker=' . $satker->kode_satker . '&indikator=' . $indikator)->with(['id' => $request->id]);
     }
 
     public function updatekinerja(Request $request)
