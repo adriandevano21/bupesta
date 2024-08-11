@@ -167,7 +167,7 @@
     </div>
 
     {{-- Realisasi --}}
-    {{-- <div class="modal fade" id="update-realisasi-kinerja" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="update-realisasi-kinerja" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -199,8 +199,8 @@
                 </form>
             </div>
         </div>
-    </div> --}}
-    <div class="modal fade" id="update-realisasi-kinerja" tabindex="-1" aria-labelledby="exampleModalLabel"
+    </div>
+    {{-- <div class="modal fade" id="update-realisasi-kinerja" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -216,7 +216,6 @@
                         <input style="font-size: 8pt" type="text" name="periodebul" hidden>
                         <div class="mb-3">
                             <input type="text" class="form-control" name="keterangan" id="keterangan" disabled>
-                            {{-- <label nama="keterangan" id="keterangan1"></label> --}}
                             <input type="number" class="form-control" name="realisasi">
                         </div>
                         <div class="mb-3">
@@ -233,7 +232,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- Analisis Triwulanan --}}
     <div class="modal fade" id="update-analisis-tr" tabindex="-1" aria-hidden="true">
