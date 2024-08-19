@@ -146,6 +146,7 @@
                     @csrf
                     <div class="modal-body">
                         <input style="font-size: 8pt" type="text" name="id" hidden>
+                        <input style="font-size: 8pt" type="text" name="periodebul" hidden>
                         <div class="mb-3">
                             <input type="text" class="form-control" name="keterangan" id="keterangan" disabled>
                             {{-- <label nama="keterangan" id="keterangan1"></label> --}}
@@ -190,7 +191,6 @@
                             <input class="form-control" type="file"
                                 name="formFile-BuktiDukung"id="formFile-BuktiDukung">
                         </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -585,6 +585,7 @@
             console.log(id, tr, periode, ket_periode);
             $("#update-target-kinerja").modal('show');
             $("#form-update-target [name='id']").val(id);
+            $("#form-update-target [name='periodebul']").val(periode);
             $("#form-update-target [id='periode-target']").val(tr);
             $("#form-update-target [name='keterangan']").val(ket_periode);
             document.getElementById("periode-target").setAttribute("name", periode);

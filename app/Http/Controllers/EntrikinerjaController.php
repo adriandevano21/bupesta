@@ -2,11 +2,72 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\satker;
+use App\Models\bulan;
+use App\Models\PengajuanAngka;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class EntrikinerjaController extends Controller
 {
+    public function entri()
+    {
+        // $matchThese = ['nip_pegawai' => auth()->user()->nip_pegawai];
+        // $OperatorEntri =  OperatorEntri::where($matchThese)->get();
+        // // dd($OperatorEntri);
+        // if ($OperatorEntri->isEmpty()) {
+        //     // return redirect()->back();
+        //     return redirect()->intended('home');
+        // }
+        // dd(auth()->user()->kode_satker);
+        // dd($OperatorEntri);
+        $data = [];
+        $data["judul"] = "Input Dashboard Kinerja";
+        $data["listsatker"] = satker::all();
+        $data["listbulan"] = bulan::all();
+
+        $data["satker"] = request('satker');
+        $data["tahun"] = request('tahun');
+        $data["bulan"] = request('bulan');
+        $data["indikator"] = request('indikator');
+        if ($data["satker"] == null) {
+            $data["satker"] = '1100';
+        }
+        if ($data["tahun"] == null) {
+            $data["tahun"] = date("Y");
+        }
+        if ($data["bulan"] == null) {
+            $data["bulan"] = date("m");
+        }
+        if ($data["indikator"] == null) {
+            $data["indikator"] = '1';
+        }
+        // if (auth()->user()->kode_satker != '1100') {
+        //     $data["satker"] = auth()->user()->kode_satker;
+        // };
+        $data["pengajuan"] = DB::table('pengajuan_angkas')
+            ->select('pengajuan_angkas.*', 'kinerja_bulanans.kode_satker')
+            ->leftJoin('kinerja_bulanans', 'pengajuan_angkas.id_kinerja_bulanan', '=', 'kinerja_bulanans.id')
+            ->where('kinerja_bulanans.kode_satker', '=', $data["satker"])
+            ->get();
+        $data["datasatker"] = DB::table('indikator_kinerjas')
+            ->select('indikator_kinerjas.*', 'angka_kinerjas.*')
+            ->leftJoin('angka_kinerjas', 'indikator_kinerjas.kode_indikator', '=', 'angka_kinerjas.kode_indikator')
+            ->where('angka_kinerjas.satker', '=', $data["satker"])
+            ->get();
+        $data["databulanan"] = DB::table('kinerja_bulanans')
+            ->where('kinerja_bulanans.kode_satker', '=', $data["satker"])
+            ->where('kinerja_bulanans.status', '=', "utama")
+            ->get();
+        $data["datasuplemen"] = DB::table('kinerja_bulanans')
+            ->where('kinerja_bulanans.kode_satker', '=', $data["satker"])
+            ->where('kinerja_bulanans.status', '=', "suplemen")
+            ->get();
+        // dd($data);
+        return view('dashboard-kinerja.entri-kinerja.entri-kinerja', compact('data'));
+    }
+
     // public function pengajuankinerja(Request $request)
     // {
     //     $satker = DB::table('kinerja_bulanans')
@@ -38,7 +99,6 @@ class EntrikinerjaController extends Controller
 
     public function updatekinerja(Request $request)
     {
-        // dd($request);
         $satker = DB::table('kinerja_bulanans')
             ->select('kode_satker')
             ->where('kinerja_bulanans.id', '=', $request->id)
@@ -72,61 +132,122 @@ class EntrikinerjaController extends Controller
             $realisasi_b1 = $kode_indikator->realisasi_b1;
         } else {
             $realisasi_b1 = $request->realisasi_b1;
+            $realisasi = $request->realisasi_b1;
         };
         if ($request->realisasi_b2 == null) {
             $realisasi_b2 = $kode_indikator->realisasi_b2;
         } else {
             $realisasi_b2 = $request->realisasi_b2;
+            $realisasi = $request->realisasi_b2;
         };
         if ($request->realisasi_b3 == null) {
             $realisasi_b3 = $kode_indikator->realisasi_b3;
         } else {
             $realisasi_b3 = $request->realisasi_b3;
+            $realisasi = $request->realisasi_b3;
         };
         if ($request->realisasi_b4 == null) {
             $realisasi_b4 = $kode_indikator->realisasi_b4;
         } else {
             $realisasi_b4 = $request->realisasi_b4;
+            $realisasi = $request->realisasi_b4;
         };
         if ($request->realisasi_b5 == null) {
             $realisasi_b5 = $kode_indikator->realisasi_b5;
         } else {
             $realisasi_b5 = $request->realisasi_b5;
+            $realisasi = $request->realisasi_b5;
         };
         if ($request->realisasi_b6 == null) {
             $realisasi_b6 = $kode_indikator->realisasi_b6;
         } else {
             $realisasi_b6 = $request->realisasi_b6;
+            $realisasi = $request->realisasi_b6;
         };
         if ($request->realisasi_b7 == null) {
             $realisasi_b7 = $kode_indikator->realisasi_b7;
         } else {
             $realisasi_b7 = $request->realisasi_b7;
+            $realisasi = $request->realisasi_b7;
         };
         if ($request->realisasi_b8 == null) {
             $realisasi_b8 = $kode_indikator->realisasi_b8;
         } else {
             $realisasi_b8 = $request->realisasi_b8;
+            $realisasi = $request->realisasi_b8;
         };
         if ($request->realisasi_b9 == null) {
             $realisasi_b9 = $kode_indikator->realisasi_b9;
         } else {
             $realisasi_b9 = $request->realisasi_b9;
+            $realisasi = $request->realisasi_b9;
         };
         if ($request->realisasi_b10 == null) {
             $realisasi_b10 = $kode_indikator->realisasi_b10;
         } else {
             $realisasi_b10 = $request->realisasi_b10;
+            $realisasi = $request->realisasi_b10;
         };
         if ($request->realisasi_b11 == null) {
             $realisasi_b11 = $kode_indikator->realisasi_b11;
         } else {
             $realisasi_b11 = $request->realisasi_b11;
+            $realisasi = $request->realisasi_b11;
         };
         if ($request->realisasi_b12 == null) {
             $realisasi_b12 = $kode_indikator->realisasi_b12;
         } else {
             $realisasi_b12 = $request->realisasi_b12;
+            $realisasi = $request->realisasi_b12;
+        };
+
+        $idpengajuan = $request->id . "_" . $request->periodebul;
+        $pengajuan = DB::table('pengajuan_angkas')
+            ->select('*')
+            ->where('idpengajuan', '=', $idpengajuan)
+            ->first();
+        // dd($pengajuan); 
+
+        if ($request->file('formFile-BuktiDukung')) {
+            if ($pengajuan === null) {
+                $file = $request->file('formFile-BuktiDukung')->store('bukti');
+                $namafile = $request->file('formFile-BuktiDukung')->getClientOriginalName();
+                DB::table('pengajuan_angkas')
+                    ->insert([
+                        'idpengajuan' => $idpengajuan,
+                        'id_kinerja_bulanan' => $request->id,
+                        'periode' => $request->periodebul,
+                        'realisasi' => $realisasi,
+                        'filebuktidukung' => $file,
+                        'buktidukung' => $namafile,
+                        'status' => 'Diajukan',
+                        'created_by' => 'adrian.devano',
+                        'created_at' => date("Y-m-d H:i:s", strtotime('now'))
+                    ]);
+            } else {
+                if ($request->file('formFile-BuktiDukung')) {
+                    if ($pengajuan->filebuktidukung) {
+                        Storage::delete($pengajuan->filebuktidukung);
+                    }
+                    $file = $request->file('formFile-BuktiDukung')->store('bukti');
+                    $namafile = $request->file('formFile-BuktiDukung')->getClientOriginalName();
+                } else {
+                    $file = $pengajuan->filebuktidukung;
+                    $namafile = $pengajuan->buktidukung;
+                }
+                PengajuanAngka::where('idpengajuan', $idpengajuan)
+                    ->update([
+                        'idpengajuan' => $idpengajuan,
+                        'id_kinerja_bulanan' => $request->id,
+                        'periode' => $request->periodebul,
+                        'realisasi' => $realisasi,
+                        'filebuktidukung' => $file,
+                        'buktidukung' => $namafile,
+                        'status' => 'Diajukan',
+                        'created_by' => 'adrian.devano',
+                        'updated_at' => date("Y-m-d H:i:s", strtotime('now'))
+                    ]);
+            };
         };
 
         if ($kode_indikator->status == 'utama') {

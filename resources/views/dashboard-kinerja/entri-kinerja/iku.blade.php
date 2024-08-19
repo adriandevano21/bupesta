@@ -145,6 +145,17 @@
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
                                     </button>
+                                    @foreach ($data['pengajuan'] as $pengajuan)
+                                        @if ($pengajuan->id_kinerja_bulanan == $databulanan->id and $pengajuan->periode == 'realisasi_b2')
+                                            <button data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                title="Lihat Bukti Dukung">
+                                                <a href="{{ asset('storage/' . $pengajuan->filebuktidukung) }}"
+                                                    target="_blank" class="btn btn-primary"
+                                                    style="padding: 5px 7px; font-size: 10px"><i
+                                                        class="fas fa-file-alt"></i></a>
+                                            </button>
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                         </td>
@@ -175,6 +186,7 @@
                                             class="btn btn-primary" style="padding: 5px 7px; font-size: 10px"><i
                                                 class="fas fa-edit"></i></a>
                                     </button>
+
                                 </div>
                             </div>
                         </td>
