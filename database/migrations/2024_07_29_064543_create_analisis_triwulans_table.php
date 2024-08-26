@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('analisis_triwulans', function (Blueprint $table) {
             $table->id();
+            $table->string('idanalisis')->unique();
             $table->string('id_kinerja_bulanan');
             $table->string('periode');
             $table->string('analisis_triwulan');

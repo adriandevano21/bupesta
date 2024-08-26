@@ -149,14 +149,8 @@
                         <input style="font-size: 8pt" type="text" name="periodebul" hidden>
                         <div class="mb-3">
                             <input type="text" class="form-control" name="keterangan" id="keterangan" disabled>
-                            {{-- <label nama="keterangan" id="keterangan1"></label> --}}
-                            <input type="text" class="form-control" name="periode" id="periode-target">
+                            <input type="text" class="form-control" name="periode" id="periode-target" required>
                         </div>
-                        {{-- <div class="mb-3">
-                            <label for="formFile" class="form-label">Upload Bukti Dukung</label>
-                            <input class="form-control" type="file" id="formFile">
-                        </div> --}}
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -184,12 +178,13 @@
                         <input style="font-size: 8pt" type="text" name="periodebul" hidden>
                         <div class="mb-3">
                             <input type="text" class="form-control" name="keterangan" id="keterangan" disabled>
-                            <input type="text" class="form-control" name="periode" id="periode-realisasi">
+                            <input type="text" class="form-control" name="periode" id="periode-realisasi"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="formFile-BuktiDukung" class="form-label">Upload Bukti Dukung</label>
-                            <input class="form-control" type="file"
-                                name="formFile-BuktiDukung"id="formFile-BuktiDukung">
+                            <input class="form-control" type="file" name="formFile-BuktiDukung"
+                                id="formFile-BuktiDukung" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -505,14 +500,23 @@
         document.addEventListener("DOMContentLoaded", function() {
             const loadingOverlay = document.getElementById("loading-overlay");
             const content = document.getElementById("content");
-
             // Simulate a loading delay (e.g., fetch data or wait for images to load)
             setTimeout(() => {
                 loadingOverlay.style.opacity = '0';
                 setTimeout(() => {
                     loadingOverlay.style.display = 'none';
                 }, 500);
-            }, 10); // Adjust the delay as needed
+            }, 10);
+        });
+        document.addEventListener("DOMContentLoaded", function() {
+            const fokus = document.getElementById("fokus1");
+            document.getElementById('fokus1').focus();
+            setTimeout(() => {
+                fokus.style.opacity = '0';
+                setTimeout(() => {
+                    fokus.style.display = 'none';
+                }, 0);
+            }, 0); // Adjust the delay as needed
         });
     </script>
 
@@ -608,7 +612,18 @@
             $("#form-update-analtri [name='periodetr']").val(periode);
             $("#form-update-analtri [name='keterangan']").val(ket_periode);
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('fokus1').focus();
+            setTimeout(() => {
+                loadingOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                }, 500);
+            }, 10);
+        });
     </script>
+
 
 </body>
 

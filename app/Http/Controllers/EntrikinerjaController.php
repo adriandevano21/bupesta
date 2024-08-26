@@ -51,6 +51,11 @@ class EntrikinerjaController extends Controller
             ->leftJoin('kinerja_bulanans', 'pengajuan_angkas.id_kinerja_bulanan', '=', 'kinerja_bulanans.id')
             ->where('kinerja_bulanans.kode_satker', '=', $data["satker"])
             ->get();
+        $data["analisis"] = DB::table('analisis_triwulans')
+            ->select('analisis_triwulans.*', 'kinerja_bulanans.kode_satker')
+            ->leftJoin('kinerja_bulanans', 'analisis_triwulans.id_kinerja_bulanan', '=', 'kinerja_bulanans.id')
+            ->where('kinerja_bulanans.kode_satker', '=', $data["satker"])
+            ->get();
         $data["datasatker"] = DB::table('indikator_kinerjas')
             ->select('indikator_kinerjas.*', 'angka_kinerjas.*')
             ->leftJoin('angka_kinerjas', 'indikator_kinerjas.kode_indikator', '=', 'angka_kinerjas.kode_indikator')
@@ -495,19 +500,38 @@ class EntrikinerjaController extends Controller
                 ]);
         };
 
-        return redirect('/entri-kinerja?satker=' . $satker->kode_satker . '&indikator=' . $indikator)->with(['id' => $request->id]);
+        return redirect('/entri-kinerja?satker=' . $satker->kode_satker . '&indikator=' . $indikator)->with(['id' => $request->id, 'kolom' => $request->periodebul]);
     }
 
     public function inputanalisistriwulanan(Request $request)
     {
-        DB::table('analisis_triwulans')
-            ->insert([
-                'id_kinerja_bulanan' => $request->id,
-                'periode' => $request->periodetr,
-                'analisis_triwulan' => $request->analisis_triwulan,
-                'created_by' => 'adrian.devano',
-                'created_at' => date("Y-m-d H:i:s", strtotime('now'))
-            ]);
+        $idanalisis = $request->id . "_" . $request->periodetr;
+        $analisis = DB::table('analisis_triwulans')
+            ->select('*')
+            ->where('idanalisis', '=', $idanalisis)
+            ->first();
+        if ($analisis == null) {
+            DB::table('analisis_triwulans')
+                ->insert([
+                    'idanalisis' => $request->id . "_" . $request->periodetr,
+                    'id_kinerja_bulanan' => $request->id,
+                    'periode' => $request->periodetr,
+                    'analisis_triwulan' => $request->analisis_triwulan,
+                    'created_by' => 'adrian.devano',
+                    'created_at' => date("Y-m-d H:i:s", strtotime('now'))
+                ]);
+        } else {
+            DB::table('analisis_triwulans')
+                ->where('idanalisis', '=', $idanalisis)
+                ->update([
+                    'idanalisis' => $request->id . "_" . $request->periodetr,
+                    'id_kinerja_bulanan' => $request->id,
+                    'periode' => $request->periodetr,
+                    'analisis_triwulan' => $request->analisis_triwulan,
+                    'updated_at' => date("Y-m-d H:i:s", strtotime('now'))
+                ]);
+        }
+
         return redirect('/entri-kinerja');
     }
 }
